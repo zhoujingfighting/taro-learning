@@ -1,4 +1,4 @@
-import HTTP from "src/utils/axios";
+import HTTP from "../utils/axios";
 
 
 export function phoneLogin( {phone , password} ){

@@ -1,33 +1,31 @@
 import { axios } from 'taro-axios'
-import Taro from '@tarojs/taro'
 // 创建新实例  默认配置
 const HTTP = axios.create({
-  timeout: 5000,
-  baseURL: 'https://autumnfish.cn',
+    timeout: 3000,
+    baseURL: 'https://autumnfish.cn',
 })
-HTTP.interceptors.request.use(request => {
-   let token=Taro.getStorageSync('token')||null;
-    token && (request.headers.Authorization = 'Bearer ' + token)
-    return request
-}, error => {
-  console.log(error)
+HTTP.interceptors.request.use(config => {
+    // window.console.log(config)
+    if (!config.params) {
+        config.params = {}
+    }
+    config.params.t = Date.now()
+    //在发送请求之前做某事
+    return config;
+}, function (error) {
+    //请求错误时做些事
+    return Promise.reject(error);
 })
 // 响应回来后做什么
 HTTP.interceptors.response.use(
     response => {
-        //对响应数据做点什么
-        let data;
-        if (response.data == undefined) {
-            data = JSON.parse(response.request.responseText);
-        } else {
-            data = response.data;
-        }
-        return data;
+        // Any status code that lie within the range of 2xx cause this function to trigger
+        // Do something with response data
+        return response.data;
     },
     err => {
-        if (err && err.response) {
-            console.log(err)
-        }// 返回接口返回的错误信息
+        // Any status codes that falls outside the range of 2xx cause this function to trigger
+        // Do something with response error
         return Promise.reject(err);
     }
 )

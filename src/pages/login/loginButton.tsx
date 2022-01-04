@@ -3,7 +3,7 @@ import { useState } from "react";
 import { View, Input } from "@tarojs/components";
 import { AtIcon, AtButton, AtToast } from "taro-ui";
 import CTitle from "../../components/CTitle";
-import HTTP from '../../utils/axios'
+import  { phoneLogin } from '../../api/login'
 
 type InputType = "phone" | "password";
 
@@ -18,10 +18,11 @@ const LoginButton = () => {
 
     function useLoginStatus(res) {
         const { code } = res.data;
+        console.log(code)
         // eslint-disable-next-line @typescript-eslint/no-shadow
         let tip = "登录成功";
         if (code !== 200) {
-            tip = res.data.msg || "登录失1败";
+            tip = res.data.msg || "登录失败";
         }
         setShowLoading(false);
         setShowTip(true);
@@ -39,6 +40,9 @@ const LoginButton = () => {
     }
 
     function login() {
+        console.log('==login==');
+        console.log(phone);
+        console.log(password);
         if (!phone) {
             this.setState({
                 showTip: true,
@@ -54,11 +58,10 @@ const LoginButton = () => {
             return;
         }
         setShowLoading(true);
-        HTTP
-            .get("/login/cellphone", {
-                phone,
-                password
-            } as any)
+        phoneLogin({
+            phone,
+            password
+        } as any)
             .then(res => {
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 useLoginStatus(res);
