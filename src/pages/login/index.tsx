@@ -21,7 +21,7 @@ const LoginComponent = () => {
             <AtList>
                 <AtListItem title='技术栈: React + taro + typescript' />
                 <AtListItem title='周晶个人链接' onClick={() => setModalOpenState(true)} />
-
+                <AtListItem title='Api全部来自网易云音乐api' />
             </AtList>
             <AtModal 
                 isOpened={modalOpenState}
