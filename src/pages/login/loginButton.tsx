@@ -2,11 +2,16 @@ import Taro from "@tarojs/taro";
 import { useState } from "react";
 import { View, Input } from "@tarojs/components";
 import { AtIcon, AtButton, AtToast } from "taro-ui";
-import CTitle from "../../components/CTitle";
 import  { phoneLogin } from '../../api/login'
 
 type InputType = "phone" | "password";
-
+/**
+ * 登录页面可以分为好几种登陆 
+ * 1 ： 手机登录 
+ *      1.1 ： 手机密码登录
+ *      1.2 ： 手机验证码登录
+ * 2 ： 扫码登录
+ */
 const LoginButton = () => {
     //这里处理登录页面的登录逻辑
     // const { showLoading, tip, showTip } = this.state
@@ -43,6 +48,10 @@ const LoginButton = () => {
         console.log('==login==');
         console.log(phone);
         console.log(password);
+        /**
+         * 应该检测手机号的格式正确与否
+         * FIXME : 可以用正则表达式来判断
+         */
         if (!phone) {
             this.setState({
                 showTip: true,
@@ -80,18 +89,18 @@ const LoginButton = () => {
 
     return (
         <View className='login_container'>
-            <CTitle isFixed={false} />
             <View className='login_content'>
                 <View className='login_content__item'>
                     <AtIcon value='iphone' size='24' color='#ccc'></AtIcon>
                     <Input
                       type='text'
-                      placeholder='手机号'
+                      placeholder='手机号1'
                       className='login_content__input'
                       onInput={(e): void => {
                             handleChange("phone", e);
                         }}
                     />
+
                 </View>
                 <View className='login_content__item'>
                     <AtIcon value='lock' size='24' color='#ccc'></AtIcon>
