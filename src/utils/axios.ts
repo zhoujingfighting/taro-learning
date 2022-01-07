@@ -2,7 +2,7 @@ import { axios } from 'taro-axios'
 // 创建新实例  默认配置
 const HTTP = axios.create({
     timeout: 3000,
-    baseURL: 'https://autumnfish.cn',
+    baseURL: 'http://localhost:3000',
 })
 HTTP.interceptors.request.use(config => {
     // window.console.log(config)

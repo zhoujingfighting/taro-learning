@@ -51,6 +51,13 @@ const LoginComponent = () => {
                         choosenLoginWay = true
                         const value = event.detail.value;
                         setLoginButtonText(selector[value]);
+                        switch(String(value)){
+                            case '0':
+                                Taro.navigateTo( {
+                                    url: '/pages/login/captha'
+                                })
+                                break;
+                        }
                     }
                     
                 }} range={selector} 

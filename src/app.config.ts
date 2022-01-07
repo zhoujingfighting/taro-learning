@@ -1,7 +1,8 @@
 export default {
   pages: [
-    'pages/login/index',
-    'pages/index/index'
+    // 'pages/login/index',
+    'pages/login/captha',
+    'pages/index/index',
     
   ],
   window: {
