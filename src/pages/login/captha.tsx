@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Taro from '@tarojs/taro';
 import { Input, View } from "@tarojs/components"
 import { AtButton, AtIcon, AtToast } from "taro-ui";
-import  { phoneLogin, getCaptha } from '../../api/login'
+import  { getCaptha, validateCaptha } from '../../api/login'
 
 type input = 'phone' | 'captha'
 
@@ -15,33 +15,33 @@ const Captha = () => {
     const [password, setPassword] = useState<string>("");
     const [tip, setTip] = useState<string>("");
 
-    function useLoginStatus(res) {
-        const { code } = res.data;
-        console.log(code)
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        let tip = "登录成功";
-        if (code !== 200) {
-            tip = res.data.msg || "登录失败";
-        }
-        setShowLoading(false);
-        setShowTip(true);
-        setTip(tip);
-        setTimeout(() => {
-            setShowTip(false);
-        }, 2000);
-        if (code === 200) {
-            Taro.setStorageSync("userInfo", res.data);
-            Taro.setStorageSync("userId", res.data.account.id);
-            Taro.navigateTo({
-                url: "/pages/index/index"
-            });
-        }
-    }
+    // function useLoginStatus(res) {
+    //     const { code } = res.data;
+    //     console.log(code)
+    //     // eslint-disable-next-line @typescript-eslint/no-shadow
+    //     let tip = "登录成功";
+    //     if (code !== 200) {
+    //         tip = res.data.msg || "登录失败";
+    //     }
+    //     setShowLoading(false);
+    //     setShowTip(true);
+    //     setTip(tip);
+    //     setTimeout(() => {
+    //         setShowTip(false);
+    //     }, 2000);
+    //     if (code === 200) {
+    //         Taro.setStorageSync("userInfo", res.data);
+    //         Taro.setStorageSync("userId", res.data.account.id);
+    //         Taro.navigateTo({
+    //             url: "/pages/index/index"
+    //         });
+    //     }
+    // }
     async function _getCaptha() {
         const res = await getCaptha({
             phone
         })
-        console.log('4222', res)
+        console.log('422231232', res)
     }
     function login() {
         console.log('==login==');
@@ -66,13 +66,12 @@ const Captha = () => {
             return;
         }
         setShowLoading(true);
-        phoneLogin({
+        validateCaptha({
             phone,
-            password: password
-        } as any)
-            .then(res => {
+            captha: password
+        }).then(res => {
                 // eslint-disable-next-line react-hooks/rules-of-hooks
-                console.log(res);
+                console.log('11111rererer', res);
                 console.log('hahahahahha');
             });
     }

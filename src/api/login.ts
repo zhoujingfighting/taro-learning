@@ -32,3 +32,13 @@ export function getCaptha( {phone} ){
         }
       });
 }
+export function validateCaptha({ phone, captha }) {
+    return HTTP({
+        url: '/captcha/verify',
+        method: 'get',
+        params: {
+            phone: phone,
+            captha
+        }
+    });
+}

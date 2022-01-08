@@ -7,9 +7,9 @@ import { AtTimeline, AtList, AtListItem, AtModal, AtModalHeader, AtModalContent,
 
 const LoginComponent = () => {
     const [modalOpenState, setModalOpenState] = React.useState(false)
-    const [selector, setSelector] = React.useState(['手机二维码登陆', '手机密码登录'])
+    const [selector, setSelector] = React.useState(['手机验证码登陆', '手机密码登录'])
     const [loginButtonText, setLoginButtonText] = React.useState('请选择登录方式');
-    let choosenLoginWay = React.useMemo<boolean>(() => false, [11])
+    let choosenLoginWay = React.useMemo<boolean>(() => false, [11343])
     return (
         <View>
             <View className='at-article__h1'>
@@ -40,7 +40,7 @@ const LoginComponent = () => {
                 items={[
                     { title: '查看项目简介', color: 'red', icon: 'check-circle' },
                     { title: '登陆账号', color: 'red', icon: 'check-circle' },
-                    { title: '开始听歌', color: 'red', icon: 'check-circle' }
+                    { title: '开始听歌111', color: 'red', icon: 'check-circle' }
                 ]}
             >
             </AtTimeline>
@@ -55,6 +55,11 @@ const LoginComponent = () => {
                             case '0':
                                 Taro.navigateTo( {
                                     url: '/pages/login/captha'
+                                })
+                                break;
+                            case '1':
+                                Taro.navigateTo({
+                                    url: '/pages/login/password'
                                 })
                                 break;
                         }
