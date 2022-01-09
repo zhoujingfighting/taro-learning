@@ -4,6 +4,7 @@ import { AtButton } from 'taro-ui'
 import 'taro-ui/dist/style/index.scss'
 import HTTP from '../../utils/axios'
 import './index.css'
+import SwiperComponent from './swiper';
 
 const  Index  = () => {
   React.useEffect( () => {
@@ -12,7 +13,7 @@ const  Index  = () => {
   })
     return (
       <View className='index'>
-        <Text>Welcome to zhoujing Taro programeee</Text>
+        <SwiperComponent></SwiperComponent>
         <AtButton 
           type='primary'
           onClick={() => console.log(1)}
