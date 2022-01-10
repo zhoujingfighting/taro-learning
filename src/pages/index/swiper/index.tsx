@@ -3,6 +3,8 @@ import Taro, { Component } from '@tarojs/taro'
 import * as React from 'react';
 import { Image, Swiper, SwiperItem, View } from '@tarojs/components'
 import { getBanner } from '../../../api/homePage'
+// eslint-disable-next-line import/first
+import './index.css'
 
 const SwiperComponent = () => {
     const [swiperList, setSwiperList] = React.useState([])
@@ -27,7 +29,7 @@ const SwiperComponent = () => {
             {
                 // eslint-disable-next-line react/jsx-key
                 swiperList.map(list => <SwiperItem>
-                    <Image src={(list as any).imageUrl as string}></Image>
+                    <Image src={(list as any).imageUrl as string} className='homepage-banner-image'></Image>
                     {/* <Image src='http://p1.music.126.net/bDWLYy8yoL3XhINGiXjxyw==/109951166908835728.jpg'></Image> */}
                 </SwiperItem>)
             }
