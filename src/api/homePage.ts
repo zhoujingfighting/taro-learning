@@ -7,3 +7,9 @@ export function getBanner() {
         method: 'get'
     });
 }
+export function getRecommend() {
+    return HTTP({
+        url: '/recommend/resource',
+        method: 'get'
+    });
+}

@@ -5,12 +5,13 @@ import 'taro-ui/dist/style/index.scss'
 import HTTP from '../../utils/axios'
 import './index.css'
 import SwiperComponent from './swiper';
+import RecommendComponent from './recommend';
 
-const  Index  = () => {
-  React.useEffect( () => {
-    const test = HTTP.get('/playlist/hot')
-    test.then(res => console.log(res))
-  })
+const Index = () => {
+    React.useEffect(() => {
+        const test = HTTP.get('/playlist/hot')
+        test.then(res => console.log(res))
+    })
     return (
       <View className='index'>
         <SwiperComponent></SwiperComponent>
@@ -18,7 +19,9 @@ const  Index  = () => {
           type='primary'
           onClick={() => console.log(1)}
         >Test</AtButton>
+        <RecommendComponent></RecommendComponent>
       </View>
+      
     )
 }
 
