@@ -9,8 +9,6 @@ HTTP.interceptors.request.use(config => {
     if (!config.params) {
         config.params = {}
     }
-    config.params.t = Date.now()
-    //在发送请求之前做某事
     return config;
 }, function (error) {
     //请求错误时做些事

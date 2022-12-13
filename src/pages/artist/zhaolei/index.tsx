@@ -1,26 +1,24 @@
 import * as React from 'react';
-import { View, Text } from '@tarojs/components'
-import { AtButton } from 'taro-ui'
+import { AtList, AtListItem } from "taro-ui"
+import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import 'taro-ui/dist/style/index.scss'
-
+import { getZhaolei } from '../../../api/song';
+import SongElement from '../../base/audio';
 const ZhaoLei = () => {
-    const innerAudioContext = Taro.createInnerAudioContext()
-    innerAudioContext.autoplay = true
-    innerAudioContext.src = 'http://localhost:3000/song/url?id=75738663';
-    innerAudioContext.play();
-    innerAudioContext.volume = 1;
-    innerAudioContext.onPlay(() => {
-        console.log('开始播放1111')
-    })
-    innerAudioContext.onError((res) => {
-        console.log(res.errMsg)
-        console.log(res.errCode)
-    })
+    const [zhaolei, setZhaolei] = React.useState([]);
+    React.useEffect(() => {
+        getZhaolei({ id: "6731" }).then(res => {
+            console.log(res["hotSongs"])
+            setZhaolei(res["hotSongs"])
+        })
+    }, [])
     return (
-        <View className='index'>
-            Test11166
-        </View>
+              <View className='components-page'>
+                { 
+                    zhaolei.map(item => <SongElement title={(item as any).al.name} id = {(item as any).al.id}/>)
+                }   
+            </View>
     )
 }
 

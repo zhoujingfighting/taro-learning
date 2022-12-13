@@ -17,8 +17,9 @@ const Index = () => {
         <SwiperComponent></SwiperComponent>
         <AtButton 
           type='primary'
+          className='welcome-button'
           onClick={() => console.log(1)}
-        >Test111</AtButton>
+        >Welcome</AtButton>
         <RecommendComponent></RecommendComponent>
       </View>
       

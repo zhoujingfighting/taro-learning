@@ -5,6 +5,7 @@ export default {
     // 'pages/login/password',
     'pages/index/index',
     'pages/artist/zhaolei/index',
+    'pages/artist/maobuyi/index',
   ],
   window: {
     backgroundTextStyle: 'light',
