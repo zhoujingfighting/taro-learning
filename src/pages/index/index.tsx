@@ -18,7 +18,7 @@ const Index = () => {
         <AtButton 
           type='primary'
           onClick={() => console.log(1)}
-        >Test</AtButton>
+        >Test111</AtButton>
         <RecommendComponent></RecommendComponent>
       </View>
       

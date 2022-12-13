@@ -2,8 +2,8 @@ import Taro, { Component } from '@tarojs/taro'
 // 引入 Swiper, SwiperItem 组件
 import * as React from 'react';
 import { View } from '@tarojs/components'
+import { AtList, AtListItem } from "taro-ui"
 import { getRecommend } from '../../../api/homePage'
-// eslint-disable-next-line import/first
 
 const RecommendComponent = () => {
     const [swiperList, setSwiperList] = React.useState([])
@@ -14,7 +14,13 @@ const RecommendComponent = () => {
     }, ['test'])
     return (
         <View>
-            fefefefqqq
+            <AtList>
+                <AtListItem title='赵雷' onClick={() => Taro.navigateTo({
+                    url: "/pages/artist/zhaolei/index"
+                })}
+                >
+                </AtListItem>
+            </AtList>
         </View>
     )
 }

@@ -4,7 +4,7 @@ export default {
     // 'pages/login/captha',
     // 'pages/login/password',
     'pages/index/index',
-    
+    'pages/artist/zhaolei/index',
   ],
   window: {
     backgroundTextStyle: 'light',
